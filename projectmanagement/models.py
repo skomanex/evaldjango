@@ -25,6 +25,8 @@ class Tache(models.Model):
     statut = models.IntegerField()
     executant = models.ManyToManyField(Utilisateur)
     tacheParent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
+    rapportAvancement = models.TextField(blank=True)
+    avancement = models.FloatField()
 
     def __str__(self):
         return self.nom
