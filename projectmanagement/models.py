@@ -2,6 +2,16 @@ from django.db import models
 
 
 # Create your models here.
+class Utilisateur(models.Model):
+    nom = models.CharField(max_length=200)
+    mdp = models.TextField(max_length=255)
+    mail = models.EmailField()
+    estResponsable = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.nom
+
+
 class Projet(models.Model):
     nom = models.CharField(max_length=40)
     statut = models.IntegerField()
@@ -27,16 +37,6 @@ class Tache(models.Model):
     tacheParent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
     rapportAvancement = models.TextField(blank=True)
     avancement = models.FloatField()
-
-    def __str__(self):
-        return self.nom
-
-
-class Utilisateur(models.Model):
-    nom = models.CharField(max_length=200)
-    mdp = models.TextField(max_length=255)
-    mail = models.EmailField()
-    estResponsable = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nom
