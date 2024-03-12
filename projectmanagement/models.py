@@ -46,4 +46,4 @@ class FormulaireTache(ModelForm):
     class Meta:
         model = Tache
         fields = ['nom', 'description', 'projet', 'priorite', 'dateDebut', 'dateFin', 'statut', 'executant',
-                  'parent']
+                  'tacheParent', 'rapportAvancement', 'avancement']
