@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.forms import ModelForm
 
 # Create your models here.
 class Utilisateur(models.Model):
@@ -42,7 +42,7 @@ class Tache(models.Model):
         return self.nom
 
 
-class FormulaireTache(forms.ModelForm):
+class FormulaireTache(ModelForm):
     class Meta:
         model = Tache
         fields = ['nom', 'description', 'projet', 'priorite', 'dateDebut', 'dateFin', 'statut', 'executant',
