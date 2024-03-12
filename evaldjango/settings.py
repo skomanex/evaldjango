@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ["141.94.237.180", "192.168.56.1", "127.0.0.1", "localhost"]
 # Application definition
 
 INSTALLED_APPS = [
-    'projectmanagement.apps.ProjectmangementConfig',
+    'projectmanagement.apps.ProjectmanagementConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
