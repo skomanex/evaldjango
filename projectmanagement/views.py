@@ -1,7 +1,6 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 
 
 # Create your views here.
 def index(request):
-    return HttpResponse('Hello Application Management')
+    return HttpResponse("Page d'accueil de l'Application de Gestion de Projet")
