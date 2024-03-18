@@ -8,6 +8,7 @@ class Utilisateur(models.Model):
     mdp = models.TextField(max_length=255)
     mail = models.EmailField()
     estResponsable = models.BooleanField(default=False)
+    estTest = models.BooleanField(default = False)
 
     def __str__(self):
         return self.nom
@@ -21,6 +22,7 @@ class Projet(models.Model):
     dateDebut = models.DateField()
     avancementEffectif = models.FloatField()
     avancementSuppose = models.FloatField()
+    estTest = models.BooleanField(default = False)
 
     def __str__(self):
         return self.nom
@@ -38,6 +40,7 @@ class Tache(models.Model):
     tacheParent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
     rapportAvancement = models.TextField(blank=True)
     avancement = models.FloatField()
+    estTest = models.BooleanField(default = False)
 
     def __str__(self):
         return self.nom
