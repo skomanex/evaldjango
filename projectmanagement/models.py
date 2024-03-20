@@ -1,5 +1,4 @@
 from django.db import models
-from django.forms import ModelForm
 
 
 # Create your models here.
@@ -44,15 +43,3 @@ class Tache(models.Model):
 
     def __str__(self):
         return self.nom
-
-
-class FormulaireTache(ModelForm):
-    class Meta:
-        model = Tache
-        fields = ['nom', 'description', 'projet', 'priorite', 'dateDebut', 'dateFin', 'statut', 'executant',
-                  'tacheParent', 'rapportAvancement', 'avancement']
-
-class FormulaireProjet(ModelForm):
-    class Meta:
-        model = Projet
-        fields = ['nom', 'statut', 'dateLivraison', 'responsable', 'dateDebut']
