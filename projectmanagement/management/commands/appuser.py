@@ -1,5 +1,5 @@
-# projectmanagement/management/commands/createappuser.py
-# ce fichier permet la création d'un utilisateur à l'aide de la commande python3 manage.py createappuser
+# projectmanagement/management/commands/appuser.py
+# ce fichier permet l'administration d'un utilisateur à l'aide de la commande python3 manage.py appuser
 
 from django.core.management.base import BaseCommand
 from projectmanagement.models import Utilisateur
@@ -69,16 +69,19 @@ class Command(BaseCommand):
         
         # Met à jour les champs
         def update_user_fields(user):
-            new_nom = input("Enter new name: ")
-            new_mdp = input("Enter new password: ")
-            new_mail = input("Enter new email: ")
-            new_estResponsable = input("Is the user responsible? (True/False): ").lower() == 'true'
-
-            user.nom = new_nom
-            user.mdp = new_mdp
-            user.mail = new_mail
-            user.estResponsable = new_estResponsable
-            user.save()
+            # Utilise la même façon que pour la création , mais on spécifie une instance à la liason du formulaire pour mettre à jour les champs de cette instance.
+            form = FormulaireUtilisateur()
+            user_data = {}
+            for field in form.fields:
+                user_data[field] = input(f"Please enter user's new {field} : ")
+            user_form = FormulaireUtilisateur(data = user_data, instance = user)
+            if user_form.is_valid():
+                user_form.save()
+                self.stdout.write(self.style.SUCCESS('User updated successfully!'))
+            else:
+                self.stdout.write(self.style.ERROR('Failed to update user. Please check your input.'))
+                for field, errors in user_form.errors.items():
+                    self.stdout.write(self.style.ERROR(f"{field}: {', '.join(errors)}"))
 
         # Option modifier, on change les champs si on trouve l'utilisateur
         if option == 'modify':
