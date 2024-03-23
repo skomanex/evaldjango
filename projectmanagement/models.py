@@ -11,6 +11,14 @@ class Utilisateur(models.Model):
 
     def __str__(self):
         return self.nom
+    
+    def to_json(self):
+        data = {
+            'nom': self.nom,
+            'mail': self.mail,
+            'estResponsable': self.estResponsable
+        }
+        return data
 
 
 class Projet(models.Model):
@@ -25,6 +33,18 @@ class Projet(models.Model):
 
     def __str__(self):
         return self.nom
+    
+    def to_json(self):
+        data = {
+            'nom': self.nom,
+            'statut': self.statut,
+            'responsableId': self.responsable.id,
+            'responsableNom': self.responsable.nom,
+            'dateDebut': self.dateDebut,
+            'dateLivraison': self.dateLivraison,
+            'avancementEffectif': self.avancementEffectif
+        }
+        return data
 
 
 class Tache(models.Model):
@@ -43,3 +63,17 @@ class Tache(models.Model):
 
     def __str__(self):
         return self.nom
+    
+    def to_json(self):
+        data = {
+            'nom': self.nom,
+            'description': self.description,
+            'projetId': self.projet.id,
+            'projetNom': self.projet.nom,
+            'priorite': self.priorite,
+            'statut': self.statut,
+            'dateDebut': self.dateDebut,
+            'dateFin': self.dateFin,
+            'avancement': self.avancement
+        }
+        return data

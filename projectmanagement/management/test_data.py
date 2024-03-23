@@ -3,8 +3,8 @@
 
 users_data = [
     {"nom": "User1", "mdp": "password1", "mail": "user1@example.com", "estResponsable": True, "estTest": True},
-    {"nom": "User2", "mdp": "password2", "mail": "user2@example.com", "estResponsable": False, "estTest": True},
-    {"nom": "User3", "mdp": "password3", "mail": "user3@example.com", "estResponsable": True, "estTest": True},
+    {"nom": "User2", "mdp": "password2", "mail": "user2@example.com", "estResponsable": True, "estTest": True},
+    {"nom": "User3", "mdp": "password3", "mail": "user3@example.com", "estResponsable": False, "estTest": True},
     {"nom": "User4", "mdp": "password4", "mail": "user4@example.com", "estResponsable": False, "estTest": True},
     {"nom": "User5", "mdp": "password5", "mail": "user5@example.com", "estResponsable": False, "estTest": True},
 ]

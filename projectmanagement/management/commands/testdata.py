@@ -4,7 +4,7 @@
 from django.core.management.base import BaseCommand
 from projectmanagement.models import Utilisateur, Projet, Tache
 from projectmanagement.management.test_data import users_data, projects_data, tasks_data
-from random import choice
+from random import choice, randrange
 
 class Command(BaseCommand):
     help = 'Manages test data, create data contained in test_data.py using argument create or destroy all data flagged with estTest with argument delete'
@@ -18,39 +18,32 @@ class Command(BaseCommand):
 
         if option == 'create':
             # Créer les utilisateurs définis dans fake_data.py
-            if not Utilisateur.objects.exists():
+            for user_data in users_data:
                 # Créer les utilisateurs si il n'existe pas
-                for user_data in users_data:
+                if not Utilisateur.objects.filter(**user_data).exists():
                     Utilisateur.objects.create(**user_data)
 
-            # Filtre pour ne garder que ceux définis comme "responsable"
-            responsables = Utilisateur.objects.filter(estResponsable=True)
-
-            # Si il n'y a pas de responsable retourne une erreur (ne devrait jamais arriver par défaut car génère en utilisant fake_data.py qui en contient au moins un (sauf modification))
-            if not responsables.exists():
-                self.stdout.write(self.style.ERROR('No responsible users found. Aborting project creation.'))
-                return
-
             # Créer les projets définis dans fake_data.py
-            if not Projet.objects.exists():
+            for project_data in projects_data:
                 # Créer les projets si ils n'existent pas
-                for project_data in projects_data:
-                    responsable = choice(responsables)
-                    project_data['responsable_id'] = responsable.id
+                if not Projet.objects.filter(**project_data).exists():
+                    # Choisis un responsable au hasard parmis les disponibles
+                    manager = choice(Utilisateur.objects.filter(estResponsable = True))
+                    project_data['responsable_id'] = manager.id
                     Projet.objects.create(**project_data)
 
-            # Créer les tâches définies dans fake_data.py
-            # Si il n'y a pas de projets retourne une erreur (ne devrait jamais arriver par défaut car génère en utilisant fake_data.py qui en contient au moins un (sauf modification))
-            if not Projet.objects.exists():
-                self.stdout.write(self.style.ERROR('No project found. Aborting Task creation.'))
-                return
-            
-            if not Tache.objects.exists():
+            # Créer les tâches définies dans fake_data.py          
+            for task_data in tasks_data:
                 # Créer les tâches si elles n'existent pas
-                for task_data in tasks_data:
-                    projet = choice(Projet.objects.all())
-                    task_data['projet_id'] = projet.id
+                if not Tache.objects.filter(**task_data).exists():
+                    # Choisis un projet au hasard parmis les disponibles
+                    project = choice(Projet.objects.all())
+                    task_data['projet_id'] = project.id
                     Tache.objects.create(**task_data)
+
+            for task in Tache.objects.all():
+                for i in range(0, randrange(1, len(users_data)+1)):
+                    task.executant.add(Utilisateur.objects.get(nom = users_data[i].get('nom')))
             self.stdout.write(self.style.SUCCESS('Data created successfully, you can check on the /admin page with a django superuser login'))
 
         elif option == 'delete':
