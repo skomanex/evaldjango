@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 
 # Create your models here.
 class Utilisateur(models.Model):
@@ -23,13 +23,21 @@ class Utilisateur(models.Model):
 
 class Projet(models.Model):
     nom = models.CharField(max_length=40)
-    statut = models.IntegerField()
-    dateLivraison = models.DateField()
     responsable = models.ForeignKey(Utilisateur, on_delete=models.CASCADE)
-    dateDebut = models.DateField()
-    avancementEffectif = models.FloatField()
-    avancementSuppose = models.FloatField()
+    statut = models.IntegerField(default = 3)
+    statutVerbose = models.CharField(max_length = 40, default = "en pause")
+    dateDebut = models.DateField(null =  True, blank = True)  
+    dateLivraison = models.DateField(null = True, blank = True)
     estTest = models.BooleanField(default = False)
+    
+    @property
+    def avancementSuppose(self):
+        if (self.dateDebut is not None) and (self.dateLivraison is not None):
+            total_time = (self.dateLivraison - self.dateDebut).days
+            current_time = (timezone.now().date() - self.dateDebut).days
+            return min(current_time/total_time, 1)
+        else:            
+            return 0
 
     def __str__(self):
         return self.nom
@@ -38,11 +46,12 @@ class Projet(models.Model):
         data = {
             'nom': self.nom,
             'statut': self.statut,
+            'statutVerbose': self.statutVerbose,
             'responsableId': self.responsable.id,
             'responsableNom': self.responsable.nom,
             'dateDebut': self.dateDebut,
             'dateLivraison': self.dateLivraison,
-            'avancementEffectif': self.avancementEffectif
+            'avancementSuppose': self.avancementSuppose
         }
         return data
 
@@ -58,22 +67,44 @@ class Tache(models.Model):
     executant = models.ManyToManyField(Utilisateur)
     tacheParent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
     rapportAvancement = models.TextField(blank=True)
-    avancement = models.FloatField()
     estTest = models.BooleanField(default = False)
+
+    # Définition d'un statut verbose accessible comme une propriété
+    @property
+    def statutVerbose(self):
+        if self.statut == 0:
+            return "planifiée"
+        elif self.statut == 1:
+            return "en cours"
+        elif self.statut == 2:
+            return "réalisée"
+        elif self.statut == 3:
+            return "validée"
+        elif self.statut == 4:
+            return "en pause"
+        else:
+            return "erreur"
 
     def __str__(self):
         return self.nom
     
+    def parentExiste(self):
+        if self.tacheParent is None:
+            return "null"
+        else:
+            return self.tacheParent.id
+
     def to_json(self):
         data = {
             'nom': self.nom,
             'description': self.description,
             'projetId': self.projet.id,
             'projetNom': self.projet.nom,
+            'tacheParentId': self.parentExiste(),
             'priorite': self.priorite,
             'statut': self.statut,
+            'statutVerbose' : self.statutVerbose,
             'dateDebut': self.dateDebut,
-            'dateFin': self.dateFin,
-            'avancement': self.avancement
+            'dateFin': self.dateFin
         }
         return data

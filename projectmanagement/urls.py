@@ -1,7 +1,6 @@
 from django.urls import path
 
 from . import views
-from projectmanagement.models import Utilisateur
 
 urlpatterns = [
     # http://192.168.56.12/projectmanagement/
