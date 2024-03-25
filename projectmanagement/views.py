@@ -1,9 +1,19 @@
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from projectmanagement.models import *
 
 # Create your views here.
-def index(request):
-    return HttpResponse("Page d'accueil de l'Application de Gestion de Projet")
+def login(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        try:
+            user = Utilisateur.objects.get(mail = email, mdp = password)
+            return redirect(reverse('pageutilisateur', args = [user.nom]))
+        except Utilisateur.DoesNotExist:
+            return render(request, 'login.html', {'error': 'Mauvais mail ou mot de passe'})             
+    return render(request, "login.html")
 
 def pageutilisateur(request, utilisateur):
     try: 

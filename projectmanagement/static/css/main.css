@@ -1,0 +1,28 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered-wrapper{
+    width: max-content;
+    height: max-content;
+}
+
+#form-style{
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error-message {
+    background-color: #f8d7da; /* Bootstrap's red error color */
+    color: #721c24; /* Bootstrap's red error text color */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    clear:both;
+}
