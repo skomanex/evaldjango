@@ -36,7 +36,7 @@ def pageutilisateur(request, utilisateur):
             'projects': [project.to_json() for project in projects],
             'tasks': [task.to_json() for task in tasks]
         }
-        return JsonResponse(data)
+        return render(request, "pageutilisateur.html", data)
     
     except Utilisateur.DoesNotExist:
-        return JsonResponse({'erreur': 'Utilisateur non trouvé'}, status = 404)
+        return render(request, "pageutilisateur.html", {'error' : 'Utilisateur introuvable'})
