@@ -1,4 +1,58 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <title>Accueil {{utilisateur.nom}}</title>
+</head>
+<body>
+    <div class="header">
+        <div class="user-name">{{utilisateur.nom}}</div>
+        <button onclick= "location.href = '{% url 'login' %}'" class="logout-button"><img src="{% static 'img/logout-icon.png'%}" alt="Logout"></button>
+    </div>
 
+    {% if projects %}
+    <ul>
+        <h2>Projets:</h2>
+        {% for project in projects %}
+            <li>
+                <div class="content-card">
+                    <header>{{ project.nom }}</header>
+                    <div class="body">
+                        <p><strong>Date de début:</strong> {{ project.dateDebut }}</p>
+                        <p><strong>Date de livraison:</strong> {{ project.dateLivraison }}</p>
+                        <p><strong>Avancement Supposé:</strong></p>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: {{ project.avancementSuppose }}%"></div>
+                        </div>                        
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% if tasks %}
+        <ul>
+        <h2>Tasks:</h2>
+        {% for task in tasks %}
+            <li>
+                <div class="content-card">
+                    <header>{{ task.nom }}</header>
+                    <div class="body">
+                        <p><strong>Etat:</strong> {{task.statutVerbose}}</p>
+                        <p><strong>Description:</strong> {{task.description}}</p>
+                        <p><strong>Date de début:</strong> {{ task.dateDebut }}</p>
+                        <p><strong>Date de fin:</strong> {{ task.dateFin }}</p>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+</body>
+</html>

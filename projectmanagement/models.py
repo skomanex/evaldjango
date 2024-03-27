@@ -31,12 +31,15 @@ class Projet(models.Model):
     estTest = models.BooleanField(default = False)
     
     @property
+    # Défini l'avancement suppose en % du temps écoulé
     def avancementSuppose(self):
+        # Si les dateDebut et dateLivraison sont associées on commence le calcul
         if (self.dateDebut is not None) and (self.dateLivraison is not None):
             total_time = (self.dateLivraison - self.dateDebut).days
             current_time = (timezone.now().date() - self.dateDebut).days
-            return min(current_time/total_time, 1)
-        else:            
+            return min(round((current_time/total_time) * 100), 100)
+        # Sinon on retourne 0
+        else:
             return 0
 
     def __str__(self):
