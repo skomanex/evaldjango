@@ -16,11 +16,11 @@ projects_data = [
 ]
 
 tasks_data = [
-    {"nom": "Task1", "description": "Description for Task1", "priorite": 1, "dateDebut": "2024-03-01", "dateFin": "2024-03-30", "statut": 1, "estTest": True},
+    {"nom": "Task1", "description": "Description for Task1", "priorite": 1, "dateDebut": "2023-03-01", "dateFin": "2024-03-30", "statut": 1, "estTest": True},
     {"nom": "Task2", "description": "Description for Task2", "priorite": 2, "dateDebut": "2024-03-01", "dateFin": "2024-03-30", "statut": 2, "estTest": True},
     {"nom": "Task3", "description": "Description for Task3", "priorite": 3, "dateDebut": "2024-03-01", "dateFin": "2024-03-30", "statut": 0, "estTest": True},
     {"nom": "Task4", "description": "Description for Task4", "priorite": 4, "dateDebut": "2024-03-01", "dateFin": "2024-04-15", "statut": 1, "estTest": True},
     {"nom": "Task5", "description": "Description for Task5", "priorite": 5, "dateDebut": "2024-03-01", "dateFin": "2024-04-15", "statut": 2, "estTest": True},
     {"nom": "Task6", "description": "Description for Task6", "priorite": 6, "dateDebut": "2024-03-01", "dateFin": "2024-04-15", "statut": 0, "estTest": True},
-    {"nom": "Task7", "description": "Description for Task7", "priorite": 7, "dateDebut": "2024-03-01", "dateFin": "2024-04-15", "statut": 1, "estTest": True}
+    {"nom": "Task7", "description": "Description for Task7", "priorite": 7, "dateDebut": "2024-03-01", "dateFin": "2025-04-15", "statut": 1, "estTest": True}
 ]
