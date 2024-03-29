@@ -13,34 +13,43 @@
 </head>
 <body>
     <div class="centered-wrapper">
+
+        <div class="titling">
+            <h1 class="big-title">Gira</h1>
+            <p><small class="text-body-secondary">Bienvenue sur le projet Django + Jira.</small></p>
+        </div>
+
+        <div class="d-flex" style="height: 300px;">
+          <div class="vr"></div>
+        </div>
+
+
         <div class="card mb-3" style="max-width: 540px;">
           <div class="row g-0">
-            <div class="col-md-4">
-              <img src="..." class="img-fluid rounded-start" alt="...">
+            <div class="col-md-4 img-login-wrapper">
+              <img src="{% static 'img/milad-fakurian-eRbgsJ0Ec0o-unsplash.jpg' %}" class="custom-img" alt="...">
             </div>
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title">Connexion</h5>
-                <p class="card-text"><small class="text-body-secondary">Bienvenue sur le projet Django Jira.</small></p>
+                <form action="" method="post">
+                {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Adresse email</label>
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Mot de passe</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <button type="submit" value="Connexion" class="btn btn-primary">Se connecter</button>
+                </form>
 
-                  <form action="" method="post">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="email" class="form-label">Adresse email</label>
-                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Mot de passe</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-            </div>
-            <button type="submit" value="Connexion" class="btn btn-primary">Se connecter</button>
-        </form>
-
-        {% if error %}
-        <div class="error-message">
-                <p>{{error}}</p>
-        </div>
-        {% endif %}
+                {% if error %}
+                <div class="error-message">
+                    <p>{{error}}</p>
+                </div>
+                {% endif %}
 
               </div>
             </div>
