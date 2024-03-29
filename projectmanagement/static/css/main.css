@@ -3,10 +3,22 @@ body {
     height: 100vh;
     width: 100vw;
     margin: 0;
+    font-family: "Figtree", serif !important;
+}
+
+:root {
+  --girapurp: #443488;
+  --girafush: #932D7D;
+  --girapink: #DD1D73;
 }
 
 .big-title{
     font-size: 10rem;
+}
+
+.cta{
+    background-color: #443488 !important;
+    color: white !important;
 }
 
 .centered-wrapper{
@@ -56,6 +68,10 @@ body {
 }
 
 .titling{
+    height: 13rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     text-align: center;
 }
 
