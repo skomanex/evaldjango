@@ -15,8 +15,9 @@ def login(request):
             request.session['pp_login'] = True
             return redirect(reverse('pageutilisateur', args = [user.nom]))
         except Utilisateur.DoesNotExist:
-            return render(request, 'login.html', {'error': 'Mauvais mail ou mot de passe'})             
-    return render(request, "login.html")
+            error = 'Mauvais mail ou mot de passe'
+            return render(request, 'login.html')
+    return render(request, "login.html", {'error': error})
 
 def pageutilisateur(request, utilisateur):
     if 'pp_login' in request.session:
