@@ -15,49 +15,71 @@
     <title>Accueil {{utilisateur.nom}}</title>
 </head>
 <body>
-    <div class="header">
-        <div class="user-name">{{utilisateur.nom}}</div>
-        <button onclick= "location.href = '{% url 'login' %}'" class="logout-button"><img src="{% static 'img/logout-icon.png'%}" alt="Logout"></button>
-    </div>
+    <nav class="navbar fixed-top bg-white border-bottom">
+      <div class="container-fluid">
+        <div class="nav-logo">
+            <img src="{% static 'img/gira-shape.svg'%}" height="20px" alt="Logo">
+            <div class="vr separator"></div>
+            <p class="username">Bienvenue {{utilisateur.nom}}</p>
+        </div>
+          <button onclick= "location.href = '{% url 'login' %}'" class="logout-button"><img src="{% static 'img/logout-icon.png'%}" alt="Logout"></button>
 
-    {% if projects %}
-    <ul>
-        <h2>Projets:</h2>
-        {% for project in projects %}
-            <li>
-                <div class="content-card">
-                    <header>{{ project.nom }}</header>
-                    <div class="body">
-                        <p><strong>Date de début:</strong> {{ project.dateDebut }}</p>
-                        <p><strong>Date de livraison:</strong> {{ project.dateLivraison }}</p>
-                        <p><strong>Avancement Supposé:</strong></p>
-                        <div class="progress-bar">
-                            <div class="progress-bar-fill" style="width: {{ project.avancementSuppose }}%"></div>
-                        </div>                        
+      </div>
+    </nav>
+    <section class="projects">
+        <div class="projects-nav">
+            <h2>Projets</h2>
+            <button class="btn cta">Nouveau projet</button>
+        </div>
+        <div class="project-wrapper">
+        {% if projects %}
+            {% for project in projects %}
+            <div class="project">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header header-project">
+                    {{ project.nom }}
                     </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Date de début: {{ project.dateDebut }}</li>
+                        <li class="list-group-item">Date de livraison: {{ project.dateLivraison }}</li>
+                        <li class="list-group-item">Avancement Supposé:
+                            <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: {{ project.avancementSuppose }}%"></div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-            </li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% if tasks %}
-        <ul>
-        <h2>Tâches:</h2>
-        {% for task in tasks %}
-            <li>
-                <div class="content-card">
-                    <header>{{ task.nom }}</header>
-                    <div class="body">
-                        <p><strong>Etat:</strong> {{task.statutVerbose}}</p>
-                        <p><strong>Description:</strong> {{task.description}}</p>
-                        <p><strong>Date de début:</strong> {{ task.dateDebut }}</p>
-                        <p><strong>Date de fin:</strong> {{ task.dateFin }}</p>
-                    </div>
-                </div>
-            </li>
-        {% endfor %}
-        </ul>
-    {% endif %}
+            </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+        <hr>
+    </section>
 
+    <section class="tasks">
+        <div class="tasks-nav">
+            <h2>Tâches</h2>
+            <button class="btn cta">Nouvelle tâche</button>
+        </div>
+        <div class="task-wrapper">
+        {% if tasks %}
+            {% for task in tasks %}
+            <div class="project">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header header-task">
+                    {{ task.nom }}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">État : {{task.statutVerbose}}</li>
+                        <li class="list-group-item">Description : {{task.description}}</li>
+                        <li class="list-group-item">Date de début : {{ task.dateDebut }}</li>
+                        <li class="list-group-item">Date de début : {{ task.dateFin }}</li>
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+    </section>
 </body>
 </html>
