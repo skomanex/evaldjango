@@ -1,0 +1,53 @@
+Index: .idea/evaldjango.iml
+===================================================================
+diff --git a/.idea/evaldjango.iml b/.idea/evaldjango.iml
+deleted file mode 100644
+--- a/.idea/evaldjango.iml	(revision 0ed28bff495096613e8e34e1b0fc6e1619e547e9)
++++ /dev/null	(revision 0ed28bff495096613e8e34e1b0fc6e1619e547e9)
+@@ -1,27 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module type="PYTHON_MODULE" version="4">
+-  <component name="FacetManager">
+-    <facet type="django" name="Django">
+-      <configuration>
+-        <option name="rootFolder" value="$MODULE_DIR$" />
+-        <option name="settingsModule" value="evaldjango/settings.py" />
+-        <option name="manageScript" value="$MODULE_DIR$/manage.py" />
+-        <option name="environment" value="&lt;map/&gt;" />
+-        <option name="doNotUseTestRunner" value="false" />
+-        <option name="trackFilePattern" value="migrations" />
+-      </configuration>
+-    </facet>
+-  </component>
+-  <component name="NewModuleRootManager">
+-    <content url="file://$MODULE_DIR$" />
+-    <orderEntry type="jdk" jdkName="Python 3.12 (evaldjango) (2)" jdkType="Python SDK" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-  </component>
+-  <component name="PyDocumentationSettings">
+-    <option name="format" value="PLAIN" />
+-    <option name="myDocStringFormat" value="Plain" />
+-  </component>
+-  <component name="TemplatesService">
+-    <option name="TEMPLATE_CONFIGURATION" value="Django" />
+-  </component>
+-</module>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"Black\">\n    <option name=\"sdkName\" value=\"Python 3.11\" />\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"Python 3.12 (evaldjango) (2)\" project-jdk-type=\"Python SDK\" />\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 0ed28bff495096613e8e34e1b0fc6e1619e547e9)
++++ b/.idea/misc.xml	(date 1711647301833)
+@@ -3,5 +3,5 @@
+   <component name="Black">
+     <option name="sdkName" value="Python 3.11" />
+   </component>
+-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (evaldjango) (2)" project-jdk-type="Python SDK" />
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12" project-jdk-type="Python SDK" />
+ </project>
+\ No newline at end of file

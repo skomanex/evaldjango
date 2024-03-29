@@ -1,0 +1,41 @@
+Index: .idea/evaldjango.iml
+===================================================================
+diff --git a/.idea/evaldjango.iml b/.idea/evaldjango.iml
+deleted file mode 100644
+--- a/.idea/evaldjango.iml	(revision 9c5d748e5c8fb0a489e1c8df3bda319540857d56)
++++ /dev/null	(revision 9c5d748e5c8fb0a489e1c8df3bda319540857d56)
+@@ -1,15 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module version="4">
+-  <component name="PyDocumentationSettings">
+-    <option name="format" value="PLAIN" />
+-    <option name="myDocStringFormat" value="Plain" />
+-  </component>
+-  <component name="TemplatesService">
+-    <option name="TEMPLATE_CONFIGURATION" value="Django" />
+-    <option name="TEMPLATE_FOLDERS">
+-      <list>
+-        <option value="$MODULE_DIR$/projectmanagement/templates" />
+-      </list>
+-    </option>
+-  </component>
+-</module>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"Black\">\n    <option name=\"sdkName\" value=\"Python 3.12 (evaldjango) (2)\" />\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"Python 3.12 (evaldjango) (2)\" project-jdk-type=\"Python SDK\" />\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 9c5d748e5c8fb0a489e1c8df3bda319540857d56)
++++ b/.idea/misc.xml	(date 1711570175405)
+@@ -3,5 +3,5 @@
+   <component name="Black">
+     <option name="sdkName" value="Python 3.12 (evaldjango) (2)" />
+   </component>
+-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (evaldjango) (2)" project-jdk-type="Python SDK" />
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12" project-jdk-type="Python SDK" />
+ </project>
+\ No newline at end of file
