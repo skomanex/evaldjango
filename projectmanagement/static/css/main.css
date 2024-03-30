@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
 body {
     background-color: #f1f1f1 !important;
     height: 100vh;
@@ -14,6 +16,24 @@ body {
 
 hr{
     margin: 3rem 0 3rem 0 !important;
+}
+
+.emoji{
+    font-size: 18px;
+    position: relative;
+}
+
+span{
+    color: gray;
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.cta{
+    background-color: #443488 !important;
+    color: white !important;
+    overflow: hidden !important;
 }
 
 .big-title{
@@ -52,13 +72,10 @@ hr{
 }
 
 .header-task{
-    background-color: #DD1D73 !important;
-    color: white !important;
-}
-
-.cta{
-    background-color: #443488 !important;
-    color: white !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
 }
 
 .centered-wrapper{
@@ -183,5 +200,54 @@ hr{
 
 .content-card .body {
     margin-top: 5px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+    padding-bottom: 3px;
+}
+
+.tag-planifiee {
+    background-color: #ff7e5e;
+}
+
+.tag-en-cours {
+    background-color: #00b2ff;
+}
+
+.tag-realisee {
+    background-color: #00be54;
+}
+
+.tag-validee {
+    background-color: #004804;
+}
+
+.tag-pause {
+    background-color: #8E44AD;
+}
+
+.tag-erreur {
+    background-color: #808B96;
+}
+
+footer{
+    background-color: #f1f1f1 !important;
+    padding: 0 1rem 0 1rem;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100vw;
+    height: 40px;
+    position: fixed;
+    border-top: 1px solid lightgray;
+    font-weight: lighter;
+    font-size:14px;
+    color: grey;
+    bottom: 0;
 }
 

@@ -29,7 +29,7 @@
     <section class="projects">
         <div class="projects-nav">
             <h2>Projets</h2>
-            <button class="btn cta">Nouveau projet</button>
+            <button class="btn cta">+ Nouveau projet</button>
         </div>
         <div class="project-wrapper">
         {% if projects %}
@@ -40,9 +40,9 @@
                     {{ project.nom }}
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Date de début: {{ project.dateDebut }}</li>
-                        <li class="list-group-item">Date de livraison: {{ project.dateLivraison }}</li>
-                        <li class="list-group-item">Avancement Supposé:
+                        <li class="list-group-item">{{ project.dateDebut }} <span>/ date de début</span></li>
+                        <li class="list-group-item">{{ project.dateLivraison }} <span>/ date de livraison</span></li>
+                        <li class="list-group-item">Avancement Supposé
                             <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                                 <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: {{ project.avancementSuppose }}%"></div>
                             </div>
@@ -59,7 +59,7 @@
     <section class="tasks">
         <div class="tasks-nav">
             <h2>Tâches</h2>
-            <button class="btn cta">Nouvelle tâche</button>
+            <button class="btn cta">+ Nouvelle tâche</button>
         </div>
         <div class="task-wrapper">
         {% if tasks %}
@@ -68,12 +68,16 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-header header-task">
                     {{ task.nom }}
+                        <li class="list-group-item">
+                             <div class="tag {% if task.statut == 0 %}tag-planifiee{% elif task.statut == 1 %}tag-en-cours{% elif task.statut == 2 %}tag-realisee{% elif task.statut == 3 %}tag-validee{% elif task.statut == 4 %}tag-pause{% else %}tag-erreur{% endif %}">
+                                 {{ task.statutVerbose }}
+                             </div>
+                        </li>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">État : {{task.statutVerbose}}</li>
-                        <li class="list-group-item">Description : {{task.description}}</li>
-                        <li class="list-group-item">Date de début : {{ task.dateDebut }}</li>
-                        <li class="list-group-item">Date de début : {{ task.dateFin }}</li>
+                        <li class="list-group-item">{{task.description}}</li>
+                        <li class="list-group-item">{{ task.dateDebut }} <span>/ date de début</span></li>
+                        <li class="list-group-item">{{ task.dateFin }} <span>/ date de fin</span></li>
                     </ul>
                 </div>
             </div>
@@ -81,5 +85,11 @@
         {% endif %}
         </div>
     </section>
+
+<footer>
+    <img src="{% static 'img/gira-logo-full.svg'%}" height=20px" alt="Logo">
+    <div class="vr separator"></div>
+    <small>Un projet réalisé dans le cadre d'un rendu de module Python / Django par Jimmy Volland, Florent Piuzzi, Chloé Chiarlini, Loris Assemat. <span class="emoji">🚀</span></small>
+</footer>
 </body>
 </html>
