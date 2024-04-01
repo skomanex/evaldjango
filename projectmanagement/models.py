@@ -24,7 +24,7 @@ class Utilisateur(models.Model):
 class Projet(models.Model):
     nom = models.CharField(max_length=40)
     responsable = models.ForeignKey(Utilisateur, on_delete=models.CASCADE)
-    statut = models.IntegerField(default = 4)
+    statut = models.IntegerField(default = 0)
     statutVerbose = models.CharField(max_length = 40, default = "en pause")
     dateDebut = models.DateField(null =  True, blank = True)  
     dateLivraison = models.DateField(null = True, blank = True)
@@ -45,15 +45,15 @@ class Projet(models.Model):
     @property
     def statutVerbose(self):
         if self.statut == 0:
-            return "planifié"
-        elif self.statut == 1:
-            return "en cours"
-        elif self.statut == 2:
-            return "livré"
-        elif self.statut == 3:
-            return "en retard"
-        elif self.statut == 4:
             return "en pause"
+        elif self.statut == 1:
+            return "planifié"
+        elif self.statut == 2:
+            return "en cours"
+        elif self.statut == 3:
+            return "livré"
+        elif self.statut == 4:
+            return "en retard"
         else:
             return "erreur"
 
@@ -91,15 +91,15 @@ class Tache(models.Model):
     @property
     def statutVerbose(self):
         if self.statut == 0:
-            return "planifiée"
-        elif self.statut == 1:
-            return "en cours"
-        elif self.statut == 2:
-            return "réalisée"
-        elif self.statut == 3:
-            return "validée"
-        elif self.statut == 4:
             return "en pause"
+        elif self.statut == 1:
+            return "planifiée"
+        elif self.statut == 2:
+            return "en cours"
+        elif self.statut == 3:
+            return "réalisée"
+        elif self.statut == 4:
+            return "validée"
         else:
             return "erreur"
 
