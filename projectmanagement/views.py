@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from projectmanagement.models import *
+from projectmanagement.forms import *
 
 # Create your views here.
 def login(request):
@@ -71,3 +72,67 @@ def pageutilisateur(request, utilisateur):
             return render(request, "pageutilisateur.html", {'error' : 'Utilisateur introuvable'})
     # else :
         raise Http404
+
+# Les trois prochaines vues sont pour renvoyer tout les objets de chaque type dans la BDD
+# ils sont aussi les cibles des redirection en cas de succès dans la soumissions d'un formulaire
+def allusers(request):
+    try:
+        users = Utilisateur.objects.filter()
+        data ={
+            'users':[user.to_json() for user in users]
+        }
+        return JsonResponse(data)
+    except:
+        return JsonResponse({'error' : 'Something went wrong'})
+
+def allprojects(request):
+    try:
+        projects = Projet.objects.filter()
+        data ={
+            'projects': [project.to_json() for project in projects]
+        }
+        return JsonResponse(data)
+    except:
+        return JsonResponse({'error' : 'Something went wrong'})
+    
+def alltasks(request):
+    try:
+        tasks = Tache.objects.filter()
+        data ={
+            'tasks': [task.to_json() for task in tasks]
+        }
+        return JsonResponse(data)
+    except:
+        return JsonResponse({'error' : 'Something went wrong'})
+
+# Les vues gérant la logique de création des objets avec les formulaires
+def createuser(request):
+    if request.method == 'POST':
+        form = FormulaireUtilisateur(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('allusers')
+    else:
+        form = FormulaireUtilisateur()
+    return render(request, 'formpage.html', {'form': form})
+
+def createproject(request):
+    if request.method == 'POST':
+        form = FormulaireProjet(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('allprojects')
+    else:
+        form = FormulaireProjet()
+    return render(request, 'formpage.html', {'form': form})
+
+
+def createtask(request):
+    if request.method == 'POST':
+        form = FormulaireTache(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('alltasks')
+    else:
+        form = FormulaireTache()
+    return render(request, 'formpage.html', {'form': form})

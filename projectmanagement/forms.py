@@ -10,7 +10,7 @@ class FormulaireUtilisateur(ModelForm):
 class FormulaireTache(ModelForm):
     class Meta:
         model = Tache
-        fields = ['nom', 'description', 'projet', 'priorite', 'dateDebut', 'dateFin', 'statut',
+        fields = ['nom', 'description', 'projet', 'priorite', 'dateDebut', 'dateFin', 'statut', 'executant',
                   'tacheParent', 'rapportAvancement', 'estTest']
 
 class FormulaireProjet(ModelForm):
