@@ -64,7 +64,7 @@ def pageutilisateur(request, utilisateur):
 
             # Suppression de la session de login
             # del request.session['pp_login']
-            return JsonResponse(data)
+            return render(request, "pageutilisateur.html", data)
         
         # Artefact datant d'avant le login, puisque le login vérifie déjà l'existance en BDD de l'utilisateur le try except est redondant.
         except Utilisateur.DoesNotExist:
