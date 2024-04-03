@@ -44,7 +44,7 @@ class Command(BaseCommand):
             for task in Tache.objects.all():
                 for i in range(0, randrange(1, len(users_data)+1)):
                     task.executant.add(Utilisateur.objects.get(nom = users_data[i].get('nom')))
-            self.stdout.write(self.style.SUCCESS('Data created successfully, you can check on the /admin page with a django superuser login'))
+            self.stdout.write(self.style.SUCCESS('Data created successfully'))
 
         elif option == 'delete':
             # Supprime les objets Utilisateur avec estTest = True
