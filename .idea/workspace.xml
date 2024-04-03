@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09319852-0c79-4a7a-9918-48d51af00dcd" name="Changes" comment="modification de l'appel de l'erreur &quot;mauvais mail ou mdp&quot; dans le render, pour ne pas que l'erreur persiste au refresh">
-      <change afterPath="$PROJECT_DIR$/projectmanagement/templates/createtask.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/evaldjango.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/evaldjango.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectmanagement/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectmanagement/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectmanagement/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/projectmanagement/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectmanagement/templates/formpage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectmanagement/templates/createtask.html" beforeDir="false" afterPath="$PROJECT_DIR$/projectmanagement/templates/createtask.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectmanagement/templates/pageutilisateur.html" beforeDir="false" afterPath="$PROJECT_DIR$/projectmanagement/templates/pageutilisateur.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectmanagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectmanagement/views.py" afterDir="false" />
     </list>
@@ -160,7 +158,7 @@
       <workItem from="1711644159115" duration="1715000" />
       <workItem from="1711726349959" duration="3520000" />
       <workItem from="1712066463859" duration="13678000" />
-      <workItem from="1712125644947" duration="1561000" />
+      <workItem from="1712125644947" duration="5724000" />
     </task>
     <task id="LOCAL-00001" summary="stash 0001_initial.py file">
       <option name="closed" value="true" />
