@@ -29,7 +29,7 @@
     <section class="projects">
         <div class="projects-nav">
             <h2>Projets</h2>
-            <button class="btn cta">+ Nouveau projet</button>
+            <button onclick= "location.href = '{% url 'createproject' %}'" class="btn cta">+ Nouveau projet</button>
         </div>
         <div class="project-wrapper">
         {% if projects %}
@@ -59,7 +59,7 @@
     <section class="tasks">
         <div class="tasks-nav">
             <h2>Tâches</h2>
-            <button class="btn cta">+ Nouvelle tâche</button>
+            <button onclick= "location.href = '{% url 'createtask' %}'" class="btn cta">+ Nouvelle tâche</button>
         </div>
         <div class="task-wrapper">
         {% if tasks %}
@@ -78,6 +78,7 @@
                         <li class="list-group-item">{{task.description}}</li>
                         <li class="list-group-item">{{ task.dateDebut }} <span>/ date de début</span></li>
                         <li class="list-group-item">{{ task.dateFin }} <span>/ date de fin</span></li>
+<!--                        <li class="list-group-item">{{ task.projet.nom }} <span>/ projet associé</span></li>-->
                     </ul>
                 </div>
             </div>

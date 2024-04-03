@@ -11,15 +11,19 @@ def login(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         try:
-            user = Utilisateur.objects.get(mail = email, mdp = password)
+            user = Utilisateur.objects.get(mail=email, mdp=password)
+
+            # Stockez l'utilisateur connecté dans la session
+            request.session['user_id'] = user.id
 
             # Création de la session de login
             # request.session['pp_login'] = True
-            return redirect(reverse('pageutilisateur', args = [user.nom]))
+            return redirect(reverse('pageutilisateur', args=[user.nom]))
         except Utilisateur.DoesNotExist:
             error = 'Mauvais mail ou mot de passe'
             return render(request, 'login.html', {'error': error})
     return render(request, "login.html")
+
 
 def pageutilisateur(request, utilisateur):
     # if 'pp_login' in request.session:
@@ -114,7 +118,7 @@ def createuser(request):
             return redirect('allusers')
     else:
         form = FormulaireUtilisateur()
-    return render(request, 'formpage.html', {'form': form})
+    return render(request, 'createuser.html', {'form': form})
 
 def createproject(request):
     if request.method == 'POST':
@@ -124,8 +128,11 @@ def createproject(request):
             return redirect('allprojects')
     else:
         form = FormulaireProjet()
-    return render(request, 'formpage.html', {'form': form})
 
+    user_id = request.session.get('user_id')
+    utilisateur = Utilisateur.objects.get(id=user_id)
+    context = {'form': form, 'utilisateur': utilisateur}
+    return render(request, 'createproject.html', context)
 
 def createtask(request):
     if request.method == 'POST':
@@ -135,4 +142,12 @@ def createtask(request):
             return redirect('alltasks')
     else:
         form = FormulaireTache()
+<<<<<<< HEAD
     return render(request, 'createtask.html', {'form': form})
+=======
+
+    user_id = request.session.get('user_id')
+    utilisateur = Utilisateur.objects.get(id=user_id)
+    context = {'form': form, 'utilisateur': utilisateur}
+    return render(request, 'createtask.html', context)
+>>>>>>> 62b58f7 (ajout cta)

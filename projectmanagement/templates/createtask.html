@@ -27,7 +27,10 @@
       </div>
     </nav>
     <section class="formulaire">
-        <h2 class="section-title">Création d'une nouvelle tâche</h2>
+        <div class="tasks-nav">
+            <h2>Création d'une nouvelle tâche</h2>
+            <button onclick="location.href = '{% url 'pageutilisateur' utilisateur %}'" class="btn cta-back">< Retour</button>
+        </div>
 
         <form method="post">
             {% csrf_token %}
@@ -42,7 +45,7 @@
                     </div>
                     <div class="form-floating mb-3">
                         {{ form.description.label }}
-                        <textarea class="form-control" id="description" name="description" style="height: 25vh" required></textarea>
+                        <textarea class="form-control" id="description" name="description" style="height: 30vh" required></textarea>
                         {% for error in form.description.errors %}
                             <small class="text-danger">{{ error }}</small>
                         {% endfor %}
@@ -113,17 +116,17 @@
                         </div>
                     </div>
                     <div class="user-choice">
-    <div class="form-floating mb-3">
-        {{ form.executant.label }}
-        <br>
-        <div class="btn-group" role="group" aria-label="Executant">
-            {% for executant in form.executant %}
-                <input type="checkbox" class="btn-check" id="{{ executant.id_for_label }}" name="{{ executant.name }}" value="{{ executant.value }}" {% if executant.value in form.executant.value %}checked{% endif %}>
-                <label class="btn btn-outline-primary" for="{{ executant.id_for_label }}">{{ executant.choice_label }}</label>
-            {% endfor %}
-        </div>
-    </div>
-</div>
+                    <div class="form-floating mb-3">
+                        {{ form.executant.label }}
+                        <br>
+                        <div class="btn-group" role="group" aria-label="Executant">
+                            {% for executant in form.executant %}
+                                <input type="checkbox" class="btn-check" id="{{ executant.id_for_label }}" name="{{ executant.name }}" value="{{ executant.value }}" {% if executant.value in form.executant.value %}checked{% endif %}>
+                                <label class="btn btn-outline-primary" for="{{ executant.id_for_label }}">{{ executant.choice_label }}</label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
 
                 </div>
             </div>
@@ -137,7 +140,9 @@
                         {% endfor %}
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="cta-container">
+                <button type="submit" class="btn cta-create">Créer</button>
             </div>
         </form>
 
