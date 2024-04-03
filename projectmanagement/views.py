@@ -118,7 +118,11 @@ def createuser(request):
             return redirect('allusers')
     else:
         form = FormulaireUtilisateur()
-    return render(request, 'createuser.html', {'form': form})
+
+    user_id = request.session.get('user_id')
+    utilisateur = Utilisateur.objects.get(id=user_id)
+    context = {'form': form, 'utilisateur': utilisateur}
+    return render(request, 'createuser.html', context)
 
 def createproject(request):
     if request.method == 'POST':
@@ -142,12 +146,10 @@ def createtask(request):
             return redirect('alltasks')
     else:
         form = FormulaireTache()
-<<<<<<< HEAD
-    return render(request, 'createtask.html', {'form': form})
-=======
+
 
     user_id = request.session.get('user_id')
     utilisateur = Utilisateur.objects.get(id=user_id)
     context = {'form': form, 'utilisateur': utilisateur}
     return render(request, 'createtask.html', context)
->>>>>>> 62b58f7 (ajout cta)
+

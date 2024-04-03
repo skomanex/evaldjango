@@ -5,6 +5,13 @@ class FormulaireUtilisateur(ModelForm):
     class Meta:
         model = Utilisateur
         fields = ['nom', 'mdp', 'mail', 'estResponsable', 'estTest']
+        labels = {
+            'nom': 'Nom de l\'utilisateur',
+            'mdp': 'Mot de passe',
+            'mail': 'Email',
+            'estResponsable': 'Responsable',
+            'estTest': 'Est un test',
+        }
 
 
 class FormulaireTache(ModelForm):

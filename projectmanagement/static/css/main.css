@@ -60,11 +60,22 @@ span{
     width: 15vw;
 }
 
+.cta-newuser{
+    border: 2px solid #6e6e6e !important;
+    color: #6e6e6e !important;
+    overflow: hidden !important;
+}
+
+.cta-newuser:hover{
+    border: 2px solid #735dd3 !important;
+    color: #735dd3 !important;
+    overflow: hidden !important;
+}
+
 .cta-create:hover{
     background-color: #735dd3 !important;
     color: white !important;
     overflow: hidden !important;
-    width: 15vw;
 }
 
 .big-title{

@@ -22,8 +22,10 @@
             <div class="vr separator"></div>
             <p class="username">Bienvenue {{utilisateur.nom}}</p>
         </div>
+          <div class="cta-header">
+          <button onclick= "location.href = '{% url 'createuser' %}'" class="btn cta-newuser">+ créer un utilisateur</button>
           <button onclick= "location.href = '{% url 'login' %}'" class="logout-button"><img src="{% static 'img/logout-icon.png'%}" alt="Logout"></button>
-
+          </div>
       </div>
     </nav>
     <section class="projects">
