@@ -9,12 +9,6 @@ class Command(BaseCommand):
         parser.add_argument('ip-port', type=str, help='The IP:port address to run the server on.')
 
     def handle(self, *args, **kwargs):
-        # MESSAGE ATTENTION
-        response = input("This command will delete all data. Are you sure you want to continue? (yes/no): ").lower().strip()
-
-        if response != 'yes':
-            self.stdout.write(self.style.WARNING("Command aborted. No data was deleted."))
-            return
         # Supprime la totalité des données (ATTTENTION, IRREVERSIBLE)
         call_command('flush', interactive=False)
         # Appelle la commande 'testdata create', utilise le fichier testdata.py
